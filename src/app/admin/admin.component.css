@@ -1,0 +1,84 @@
+.card {
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-footer {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.btnn{
+    padding:5px;
+    border: 2px solid blue;
+    color:white;
+    background-color: blue;
+    margin:10px;
+    
+}
+.bluestyle{
+    border:2px solid skyblue; color:skyblue; background-color: white;
+}
+
+.bluestyle:hover{
+    background-color: skyblue;
+    border:2px solid skyblue; 
+    color:white;
+}
+
+.greenstyle{
+    margin-left: 20px; margin-right: 20px; border:2px solid lightgreen; color:lightgreen; background-color: white;
+}
+.greenstyle:hover{
+    background-color: lightgreen;
+    border:2px solid lightgreen;
+    color:white;
+}
+ .redstyle{
+    border:2px solid crimson; color:crimson; background-color: white;
+ }
+ .redstyle:hover{
+    background-color:crimson;
+    border:2px solid crimson;
+    color:white;
+ }
+
+ .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #0062cc;
+    border-color: #005cbf;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #004085;
+    border-color: #003769;
+  }
+  

@@ -1,0 +1,29 @@
+<div class="background-img pagesize" style="background-image: url('assets/wlp2.jpg');">
+    <!-- <video autoplay muted loop>
+        <source src="assets/ttbg2.mp4" type="video/mp4">
+    </video> -->
+    <div class="text-center mb-5">
+        <h1 class="headingstyle animated-heading">Discover the Easiest Way to Schedule Slots</h1>
+        <h1 class="headingstyle animated-heading">with <span class="text-danger">SpinBook</span> Booking Application</h1>
+    </div>
+<div class="d-flex flex-wrap justify-content-center">
+    <div class="card text-center my-3 mx-auto" *ngFor="let table of tables" style="width: 18rem; ">
+        <div class="card-header text-white" style="border-radius: 9px; background-color: rgb(241, 73, 73)">
+            {{table.tableName}}
+        </div>
+        <div class="m-3">
+            <b>{{table.tableDescription}}</b>
+        </div>
+        
+        <div>
+            <button class="btn btn-success" style="background-color: rgb(77, 75, 75);" (click)="booknow(table.tableId,table.tableName)">Book Now</button>
+        </div> <br>
+        <div class="card-footer" *ngIf="table.isAvailable" style="color: green;">
+            Status: Available
+        </div>
+        <div class="card-footer" *ngIf="!table.isAvailable" style="color:crimson">
+            Status: Unavailable
+        </div>
+    </div>
+</div>
+</div>

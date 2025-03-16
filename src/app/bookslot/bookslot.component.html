@@ -1,0 +1,15 @@
+<div class="background-img pagesize" style="background-image: linear-gradient(-90deg, rgba(128, 128, 128, 0.816) 0%, rgba(128, 0, 0, 0.867) 50%);">
+<div class="booking-history">
+    <h2>Your Bookings</h2>
+    <div class="bookings-list">
+      <div class="booking-card">
+        <div class="booking-details">
+      <div class="booking-card" *ngFor="let detail of info">
+        <div class="booking-details">
+          <h3>=> <u>Table Name:</u>{{detail.tableName}}</h3>
+          <p><strong>-> <u>Slot:</u></strong> {{detail.startTime}} - {{detail.endTime}}</p>
+          <p><strong>-> <u>Date:</u></strong> {{detail.todaysDate}}</p>
+        </div>
+  </div>
+  </div>
+  

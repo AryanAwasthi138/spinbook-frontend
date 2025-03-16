@@ -1,0 +1,193 @@
+.grad{
+    padding: 0%;
+    width: 100%;
+    height: 89vh;
+    background-image: linear-gradient(-90deg, rgba(110, 31, 31, 0.816) 0%, rgba(59, 4, 4, 0.867) 40%);
+    background-size: 100%;
+}
+.feature-card {
+    border: none;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Ensures hover effects stay within card boundaries */
+}
+
+.feature-card img {
+    max-width: 100px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.feature-card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds shadow */
+    background-color: grey /* Changes background color on hover */
+}
+
+.feature-card:hover img {
+    transform: rotate(10deg); /* Rotates the image */
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::before {
+    opacity: 1; /* Shows gradient overlay on hover */
+}
+
+.feature-card:hover h5 {
+    color: #2ecc71; /* Changes text color on hover */
+}
+
+.booking-section {
+    background-color: #343a40;
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+.booking-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+.btn-book-now {
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    background-color: #28a745;
+    color: white;
+}
+.footer {
+    background-color: #212529;
+    color: #f8f9fa;
+    padding: 2rem 0;
+    text-align: center;
+}
+.footer p {
+    margin-bottom: 0;
+}
+.cardcolor{
+    background-color: #dedfe039;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    color:goldenrod;
+  }
+  50% {
+    color:#23a9cb ;
+  }
+  100% {
+    color:#e74c3c ;
+  }
+}
+
+.animated-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out, colorChange 5s infinite;
+}
+.animated-heading span:nth-child(1) { animation-delay: 0.1s; }
+.animated-heading span:nth-child(2) { animation-delay: 0.2s; }
+.animated-heading span:nth-child(3) { animation-delay: 0.3s; }
+.animated-heading span:nth-child(4) { animation-delay: 0.4s; }
+.animated-heading span:nth-child(5) { animation-delay: 0.5s; }
+.animated-heading span:nth-child(6) { animation-delay: 0.6s; }
+.animated-heading span:nth-child(7) { animation-delay: 0.7s; }
+.animated-heading span:nth-child(8) { animation-delay: 0.8s; }
+.animated-heading span:nth-child(9) { animation-delay: 0.9s; }
+.animated-heading span:nth-child(10) { animation-delay: 1s; }
+.headingstyle {
+  font-size: 2.0rem;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  font-family: 'cursive', cursive; 
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.animated-heading {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  animation: fadeIn 1.5s ease-in-out, colorGlow 3s infinite alternate, slideIn 10s linear infinite;
+}
+
+.animated-heading:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes colorGlow {
+  0% {
+      color: maroon;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+      color:black;
+      text-shadow: 0 0 20px rgba(255, 71, 87, 0.8);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+
+

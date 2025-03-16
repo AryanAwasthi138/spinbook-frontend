@@ -1,0 +1,9 @@
+.grad{
+    padding: 0%;
+    width: 100%;
+    height: 89vh;
+    background-image: linear-gradient(-90deg, rgba(128, 128, 128, 0.816) 0%, rgba(128, 0, 0, 0.867) 40%);
+    background-size: 100%;
+    margin:0 auto;
+    margin-top: 0%;
+}

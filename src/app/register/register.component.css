@@ -1,0 +1,19 @@
+.image{
+    width:600px;
+    height:600px;
+    border-radius: 25%;
+    opacity:1;
+    filter: drop-shadow(10px 10px 10px black);
+}
+
+.error{
+    color:red;
+    font-size:small;
+}
+.grad{
+    padding: 0%;
+    width: 100%;
+    height: 70vh;
+    background-image: linear-gradient(-90deg, rgba(128, 128, 128, 0.816) 0%, rgba(128, 0, 0, 0.867) 40%);
+    background-size: 100%;
+}

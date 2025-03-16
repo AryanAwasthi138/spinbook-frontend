@@ -1,0 +1,30 @@
+<div class="grad">
+<div class="container" *ngFor="let slot of slots" >
+    <div class="card mb-3" style="max-width: 700px;">
+        <div class="row g-0">
+
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <i class="bi bi-table-tennis table-tennis-icon"></i>
+                <img src="assets/stag.jpeg" alt="TT-image" width="170px" height="150px">
+
+            </div>
+            <div class="col-md-8" style="color:white;" *ngIf="!slot.isBooked">
+                <div class="card-body" style="background-color:darkgrey;">
+                    <h5 class="card-title" style="color:green">Available</h5>
+                    <p class="card-text" style="color:black" >Book your slot for the <strong>{{tableName}}</strong> Table</p>
+                    <p class="card-text" style="color:black">Available-Slot => {{slot.startTime}} to {{slot.endTime}}</p>
+                    <button type="button" class="btn btn-book" style="background-color: green; color:white" (click)="bookslot(slot.table.tableId,slot.slotId)">Book Slot</button>
+                </div>
+            </div>
+            <div class="col-md-8" style="color:white;" *ngIf="slot.isBooked">
+                <div class="card-body" style="background-color:darkgray;">
+                    <h5 class="card-title" style="color:maroon">Unavailable</h5>
+                    <p class="card-text" style="color:black">Slot for the time <strong>{{slot.startTime}} to {{slot.endTime}}</strong> <br> is already booked
+                        in the  <strong>{{tableName}}</strong> Table</p>
+                    <button type="button" class="btn btn-danger" style="background-color:maroon" >Already Booked</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

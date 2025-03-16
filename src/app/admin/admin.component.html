@@ -1,0 +1,77 @@
+<!-- For Stag Table Card-->
+<div class="d-flex justify-content-end ">
+    <button class=" card btn btnn btn-primary mt-5" data-bs-toggle="modal" data-bs-target="#addTableModal" style="border-radius: 10px; padding: 7px 40px 7px 40px">Add
+        Table
+    </button>
+    <div class="modal fade" id="addTableModal" tabindex="-1" aria-labelledby="addTableModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addTableModalLabel">Add New Table</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+              
+            </div>
+            <div class="modal-body">
+              <form #addTableForm="ngForm" (ngSubmit)="onAddTable(addTableForm)">
+                <div class="mb-3">
+                  <label for="tableName" class="form-label">Table Name</label>
+                  <input type="text" class="form-control" id="tableName" [(ngModel)]="tableData.tableName" name="tableName"  required>
+                </div>
+                <div class="mb-3">
+                  <label for="tableDescription" class="form-label">Description</label>
+                  <textarea class="form-control" id="tableDescription" name="tableDescription" [(ngModel)]="tableData.tableDescription" rows="3" required></textarea>
+                </div>
+                <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                <button type="submit" class="btn btn-primary" (click)="onAddTable(tableData)">Add Table</button>
+                <button type="button" id="closeModalButton" class="d-none" data-bs-dismiss="modal"></button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="d-flex flex-wrap justify-content-center">
+    <div class="card text-center my-3 mx-auto" *ngFor="let table of tables" style="width: 18rem; ">
+        <div class="card-header bg-primary  text-white" style="border-radius: 10px; background-color: rgb(174, 97, 4);">
+            {{table.tableName}}
+        </div>
+        <div class="m-3">
+            <b>{{table.tableDescription}}</b>
+        </div>
+        <div>
+            <button class="btn btn-success bluestyle" (click)="viewSlots(table.tableId)">View</button>
+            <button class="btn btn-success greenstyle" (click)="UpdateEntries(table.tableId)">Update</button>
+            <button class="btn btn-success redstyle" data-bs-toggle="modal" data-bs-target="#deleteModel" (click)="deletetabledata(table.tableId)">Delete</button>
+        </div><br>
+        <div class="card-footer " *ngIf="table.isAvailable" style="color:green;">
+            Status: Available
+        </div>
+        <div class="card-footer" *ngIf="!table.isAvailable" style="color:red;">
+            Status: Unavailable
+        </div>
+    </div>
+</div>
+
+
+<!-- deleteModel -->
+<div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModel">Delete Table</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <p>Would you want to delete table? This action could not be change.</p>
+        <button type="button" class="btn btn-secondary m-2 " data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-success redstyle" (click)="deletetable()">Delete</button>
+        <button type="button" id="closeModalButton" class="d-none" data-bs-dismiss="modal"></button>
+      </div>
+    </div>
+  </div>
+</div>
+

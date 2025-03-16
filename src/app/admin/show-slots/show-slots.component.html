@@ -1,0 +1,182 @@
+<!-- <div class="d-flex justify-content-end ">
+    <button class=" cards btn btnn btn-primary mt-5" style="border-radius: 10px; padding: 7px 40px 7px 40px">Add Slot</button>
+        <button class=" cards btn btnn btn-primary mt-5" style="border-radius: 10px; padding: 7px 40px 7px 40px">Reset Slot</button>
+</div>
+<div class="grad">
+    <div class="container" *ngFor="let slot of slots" >
+        <div class="card mb-3" style="max-width: 700px;">
+            <div class="row g-0">
+    
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                    <i class="bi bi-table-tennis table-tennis-icon"></i>
+                    <img src="assets/stag.jpeg" alt="TT-image" width="170px" height="150px">
+    
+                </div>
+                <div class="col-md-8" style="color:white;" *ngIf="!slot.isBooked">
+                    <div class="card-body" style="background-color:darkgrey;">
+                        <h5 class="card-title" style="color:green">Available</h5>
+                        <p class="card-text" style="color:black" >Book your slot for the <strong>{{tableName}}</strong> Table</p>
+                        <p class="card-text" style="color:black">Available-Slot => {{slot.startTime}} to {{slot.endTime}}</p>
+                        <button type="button" class="btn btn-book" style="background-color: green; color:white" (click)="bookslot(slot.table.tableId,slot.slotId)">Book Slot</button>
+                    </div>
+                </div>
+                <div class="col-md-8" style="color:white;" *ngIf="slot.isBooked">
+                    <div class="card-body" style="background-color:darkgray;">
+                        <h5 class="card-title" style="color:maroon">Unavailable</h5>
+                        <p class="card-text" style="color:black">Slot for the time <strong>{{slot.startTime}} to {{slot.endTime}}</strong> <br> is already booked
+                            in the  <strong>{{tableName}}</strong> Table</p>
+                        <button type="button" class="btn btn-danger" style="background-color:maroon" >Already Booked</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> -->
+<button class=" btn btnn btn-primary justify-content-end mt-5" data-bs-toggle="modal" data-bs-target="#addSlotModal"
+    style="border-radius: 10px; padding: 7px 40px 7px 40px">Add Slots</button>
+
+<div class="modal fade" id="addSlotModal" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModel">Add Slot</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body">
+                <p>Enter Slot Details</p>
+                <div class="mb-3">
+                    <label for="startTime" class="form-label">Start Time</label>
+                    <p-calendar [(ngModel)]="starttime" inputId="startTime" [timeOnly]="true"></p-calendar>
+                </div>
+                <div class="mb-3">
+                    <label for="endTime" class="form-label">End Time</label>
+                    <p-calendar [(ngModel)]="endtime" inputId="endTime" [timeOnly]="true"></p-calendar>
+                </div>
+                <button type="button" class="btn btn-secondary m-2 " data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-success redstyle" (click)="addSlots()">Add</button>
+                <button type="button" id="closeModalButton" class="d-none" data-bs-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button class=" btn btnn btn-primary mt-5" data-bs-toggle="modal" data-bs-target="#resetModal"
+    style="border-radius: 10px; padding: 7px 40px 7px 40px">Reset Slots</button>
+
+<div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="resetModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resetModel">Reset Slots</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body">
+                <p>Would you want to reset all the slots? This action could not be change.</p>
+                <button type="button" class="btn btn-secondary m-2 " data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-success redstyle" (click)="ResetSlots()">Reset</button>
+                <button type="button" id="closeModalButton" class="d-none" data-bs-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<p-card class="manual">
+    <ng-template pTemplate="header">
+        <h1>Slot Details</h1>
+        <h3>Table Name : {{slots[0].table.tableName}}</h3>
+    </ng-template>
+    <p-table [value]="slots" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:20%">Slot Id</th>
+                <th style="width:20%">Start Time</th>
+                <th style="width:20%">End Time</th>
+                <th style="width:20%">Status</th>
+                <th style="width:20%">UserName</th>
+                <th style="width:20%"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-slot let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="slot">
+                <td>
+                    {{slot.slotId}}
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="slot.startTime" required />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{slot?.startTime}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="slot.endTime" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{slot?.endTime }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td > 
+                    <div *ngIf="!slot.isBooked">{{'Available'}}</div>
+                    <div *ngIf="slot.isBooked">{{'Booked'}}</div>
+                </td>
+                <td>
+
+                    {{slot?.users?.firstName }} {{slot?.users?.lastName}}
+
+                </td>
+
+
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                            (click)="onRowEditInit(slot)" class="p-button-rounded p-button-text">
+                        </button>
+                        <button *ngIf="!editing" pButton icon="pi pi-trash" data-bs-toggle="modal" (click)="openDeleteSlotModal(slot.slotId)"
+                            data-bs-target="#deleteSlotModal" class="p-button-rounded p-button-text">
+                        </button>
+
+                        <div class="modal fade" id="deleteSlotModal" tabindex="-1" aria-labelledby="deleteSlotModal"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModel">Delete Slot</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Would you want to delete the slot ? This action could not be change.</p>
+                                        <button type="button" class="btn btn-secondary m-2 "
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button class="btn btn-success redstyle" (click)="DeleteSlots()">Delete</button>
+                                        <button type="button" id="closeModalButton" class="d-none"
+                                            data-bs-dismiss="modal"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                            (click)="onRowEditSave(slot)" class="p-button-rounded p-button-text p-button-success mr-2">
+                        </button>
+                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                            (click)="onRowEditCancel(slot, ri)" class="p-button-rounded p-button-text p-button-danger">
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</p-card>
